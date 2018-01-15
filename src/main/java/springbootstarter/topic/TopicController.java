@@ -1,6 +1,7 @@
 package springbootstarter.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,13 @@ public class TopicController {
     @RequestMapping("/topics")
     public List<Topic> getAllTopics(){
         return topicService.getAllTopics();
+    }
+
+    //if the PathVariable is not the same name as the function, you can use
+    //  "@PathVariable("PathVariableNameHere")"
+    @RequestMapping("/topics/{id}")
+    public Topic getTopic(@PathVariable String id){
+        return topicService.getTopic(id);
     }
 
 }
